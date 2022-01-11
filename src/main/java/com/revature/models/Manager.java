@@ -1,8 +1,6 @@
 package com.revature.models;
 
-import java.util.ArrayList;
 import java.util.List;
-import com.revature.models.User;
 
 public class Manager extends User {
 

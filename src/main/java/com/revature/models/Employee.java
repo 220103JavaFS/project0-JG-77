@@ -13,9 +13,10 @@ public class Employee extends User {
     }
 
     //Manager variable --> will be linked to only specific ids/people
-    private String manager; //employee only has 1 manager
+    //private String manager; //employee only has 1 manager
 
     public static void addHours(){ //function for employees in add daily hours worked
         addHours();
     }
+
 }

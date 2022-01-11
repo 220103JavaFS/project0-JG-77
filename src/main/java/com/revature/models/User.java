@@ -5,20 +5,20 @@ import java.util.List;
 import java.util.Objects;
 
 public abstract class User {
-
-    public User(int id, String firstName, String lastName, String fullName, int dept, List<Integer> hoursWorked, String password) {
+    //constructor
+    public User(int id, String firstName, String lastName, String fullName, String password, int dept, List<Integer> hoursWorked, String manager) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.fullName = fullName;
+        this.password = password;
         this.dept = dept;
         this.hoursWorked = hoursWorked;
-        //this.manager = manager;
-        this.password = password;
+        this.manager = manager;
     }
 
     public User() {
-    };
+    }
 
     //user info variables
     //essentially three tiers: employee, manager, Admin (HR) for management system app
@@ -37,9 +37,28 @@ public abstract class User {
     private List<Integer> hoursWorked; //object with # of hours worked for the week
 
     //employees can see who their manager is
-    //private String manager; //do I need this here, or in employee?
+    private String manager; //do I need this here, or in employee?
+
+    //collection of employees --> managers can see all their employees from their dept
+    private static ArrayList<Employee> employees;
 
     //getter & setter methods
+    public static ArrayList<Employee> getEmployees() {
+        return employees;
+    }
+
+    public static void setEmployees(ArrayList<Employee> employees) {
+        User.employees = employees;
+    }
+
+    public String getManager() {
+        return manager;
+    }
+
+    public void setManager(String manager) {
+        this.manager = manager;
+    }
+
     public int getId() {
         return id;
     }
@@ -96,14 +115,6 @@ public abstract class User {
         this.hoursWorked = hoursWorked;
     }
 
-//    public String getManager() {
-//        return manager;
-//    }
-//
-//    public void setManager(String manager) {
-//        this.manager = manager;
-//    }
-
     public String getPassword() {
         return password;
     }
@@ -117,15 +128,15 @@ public abstract class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return getId() == user.getId() && getDept() == user.getDept() && Objects.equals(getFirstName(), user.getFirstName()) && Objects.equals(getLastName(), user.getLastName()) && Objects.equals(getFullName(), user.getFullName()) && Objects.equals(getPassword(), user.getPassword()) && Objects.equals(getHoursWorked(), user.getHoursWorked());
+        return getId() == user.getId() && getDept() == user.getDept() && Objects.equals(getFirstName(), user.getFirstName()) && Objects.equals(getLastName(), user.getLastName()) && Objects.equals(getFullName(), user.getFullName()) && Objects.equals(getPassword(), user.getPassword()) && Objects.equals(getHoursWorked(), user.getHoursWorked()) && Objects.equals(getManager(), user.getManager());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getFirstName(), getLastName(), getFullName(), getPassword(), getDept(), getHoursWorked());
+        return Objects.hash(getId(), getFirstName(), getLastName(), getFullName(), getPassword(), getDept(), getHoursWorked(), getManager());
     }
 
-    @Override //for displaying user variables in object
+    @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
@@ -135,13 +146,10 @@ public abstract class User {
                 ", password='" + password + '\'' +
                 ", dept=" + dept +
                 ", hoursWorked=" + hoursWorked +
+                ", manager='" + manager + '\'' +
                 '}';
     }
-
-//    //collection of employees --> managers can see all their employees from their dept
-//    private static ArrayList<Employee> employees;
-//
-//    //method for managers to remove employee
+    //method for managers to remove employee
 //    public static boolean removeEmployee(Employee a) {
 //        employees.remove(a);
 //        return true;
