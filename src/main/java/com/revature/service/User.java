@@ -4,6 +4,18 @@ import java.util.ArrayDeque;
 import java.util.List;
 
 public class User {
+
+    public User(int id, String firstName, String lastName, String fullName, int dept, List<Integer> hoursWorked, String manager, ArrayDeque<String> employees) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.fullName = fullName;
+        this.dept = dept;
+        this.hoursWorked = hoursWorked;
+        this.manager = manager;
+        this.employees = employees;
+    }
+
     //user info variables
     //essentially three tiers: employee, manager, Admin (HR) for management system app
     private int id; // unique employee id for each user (all employees)
