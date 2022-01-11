@@ -1,0 +1,4 @@
+21:36:36.266 [] [main] DEBUG com.revature.Driver - i am a debug log
+21:36:36.269 [] [main] INFO  com.revature.Driver - I am an info log
+21:36:36.269 [] [main] WARN  com.revature.Driver - I am a warn log
+21:36:36.269 [] [main] ERROR com.revature.Driver - I am an error log
