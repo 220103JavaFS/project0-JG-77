@@ -12,7 +12,7 @@ public class Employee extends User {
     public Employee() {
     }
 
-    //Manager
+    //Manager variable
 
     public static void addHours(){ //function for employees in add daily hours worked
         addHours();
