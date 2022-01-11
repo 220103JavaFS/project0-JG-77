@@ -1,5 +1,6 @@
 package com.revature.models;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -136,4 +137,24 @@ public abstract class User {
                 ", hoursWorked=" + hoursWorked +
                 '}';
     }
+
+//    //collection of employees --> managers can see all their employees from their dept
+//    private static ArrayList<Employee> employees;
+//
+//    //method for managers to remove employee
+//    public static boolean removeEmployee(Employee a) {
+//        employees.remove(a);
+//        return true;
+//    }
+//
+//    //method for managers to add employee
+//    public static boolean addEmployee(Employee a) {
+//        employees.add(a);
+//        return true;
+//    }
+//
+//    //get employees by dept #
+//    public Employee getDeptEmployees(int dept){
+//        return employees.get(dept);
+//    }
 }

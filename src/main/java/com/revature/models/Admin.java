@@ -1,7 +1,9 @@
 package com.revature.models;
 
-import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.List;
+
+
 
 public class Admin extends User {
 
@@ -12,4 +14,5 @@ public class Admin extends User {
 
     public Admin() {
     }
+
 }
