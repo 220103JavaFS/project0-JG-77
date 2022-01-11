@@ -3,7 +3,7 @@ package com.revature.service;
 import java.util.ArrayDeque;
 import java.util.List;
 
-public class User {
+public abstract class User {
 
     public User(int id, String firstName, String lastName, String fullName, int dept, List<Integer> hoursWorked, String manager, ArrayDeque<String> employees) {
         this.id = id;
@@ -15,6 +15,7 @@ public class User {
         this.manager = manager;
         this.employees = employees;
     }
+
 
     //user info variables
     //essentially three tiers: employee, manager, Admin (HR) for management system app
