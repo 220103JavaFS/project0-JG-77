@@ -11,7 +11,7 @@ Possible examples include:
 
 **Requirements**
 * Technologies:
-  *	Java 8
+  *	Java 8 
     * Javalin (HTTP handling)
     * JDBC (Database Connectivity)
     * JUnit (Unit Testing)
