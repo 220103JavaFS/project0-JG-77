@@ -1,5 +1,8 @@
 package com.revature.service;
 
+import java.util.ArrayDeque;
+import java.util.List;
+
 public class User {
     //user info variables
     //essentially three tiers: employee, manager, Admin (HR) for management system app
@@ -9,14 +12,7 @@ public class User {
 
     private String lastName;
 
-    private fullName;
-
-    public String getFullName() {
-        fullName = firstName + lastName;
-
-        System.out.println(fullname);
-        return fullName;
-    }
+    private String fullName = firstName+lastName;
 
     private int dept;
 
@@ -26,5 +22,72 @@ public class User {
     private String manager;
 
     //Collection of employees in department for manager/admin to view
-    private ArrayDeque<String> employees = new ArrayDeque<String>;
+    private ArrayDeque<String> employees = new ArrayDeque<String>();
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getFullName() {
+        fullName = firstName + lastName;
+
+        System.out.println(fullName);
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public int getDept() {
+        return dept;
+    }
+
+    public void setDept(int dept) {
+        this.dept = dept;
+    }
+
+    public List<Integer> getHoursWorked() {
+        return hoursWorked;
+    }
+
+    public void setHoursWorked(List<Integer> hoursWorked) {
+        this.hoursWorked = hoursWorked;
+    }
+
+    public String getManager() {
+        return manager;
+    }
+
+    public void setManager(String manager) {
+        this.manager = manager;
+    }
+
+    public ArrayDeque<String> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(ArrayDeque<String> employees) {
+        this.employees = employees;
+    }
 }
