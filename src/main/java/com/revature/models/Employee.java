@@ -4,14 +4,16 @@ import java.util.Objects;
 
 public class Employee {
     //constructors
-    public Employee(String name, String userName, String password, int department, int hoursWorked, boolean isManager, boolean isAdmin) {
+
+
+    public Employee(String name, String userName, String password, int department, int hoursWorked, Manager manager, Admin admin) {
         this.name = name;
         this.userName = userName;
         this.password = password;
         this.department = department;
         this.hoursWorked = hoursWorked;
-        this.isManager = isManager;
-        this.isAdmin = isAdmin;
+        this.manager = manager;
+        this.admin = admin;
     }
 
     public Employee() {
@@ -28,9 +30,10 @@ public class Employee {
 
     private int hoursWorked;
 
-    private boolean isManager = false;
+    private Manager manager;
 
-    private boolean isAdmin = false;
+    private Admin admin;
+
 
     //getters & setters
     public String getName() {
@@ -73,36 +76,39 @@ public class Employee {
         this.hoursWorked = hoursWorked;
     }
 
-    public boolean isManager() {
-        return isManager;
+    public Manager getManager() {
+        return manager;
     }
 
-    public void setManager(boolean manager) {
-        isManager = manager;
+    public void setManager(Manager manager) {
+        this.manager = manager;
     }
 
-    public boolean isAdmin() {
-        return isAdmin;
+    public Admin getAdmin() {
+        return admin;
     }
 
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
+    public void setAdmin(Admin admin) {
+        this.admin = admin;
     }
 
     //equals and hashCode methods
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return getDepartment() == employee.getDepartment() && getHoursWorked() == employee.getHoursWorked() && isManager() == employee.isManager() && isAdmin() == employee.isAdmin() && Objects.equals(getName(), employee.getName()) && Objects.equals(getUserName(), employee.getUserName()) && Objects.equals(getPassword(), employee.getPassword());
+        return getDepartment() == employee.getDepartment() && getHoursWorked() == employee.getHoursWorked() && Objects.equals(getName(), employee.getName()) && Objects.equals(getUserName(), employee.getUserName()) && Objects.equals(getPassword(), employee.getPassword()) && Objects.equals(getManager(), employee.getManager()) && Objects.equals(getAdmin(), employee.getAdmin());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getName(), getUserName(), getPassword(), getDepartment(), getHoursWorked(), isManager(), isAdmin());
+        return Objects.hash(getName(), getUserName(), getPassword(), getDepartment(), getHoursWorked(), getManager(), getAdmin());
     }
+
     //toString()
+
     @Override
     public String toString() {
         return "Employee{" +
@@ -111,8 +117,8 @@ public class Employee {
                 ", password='" + password + '\'' +
                 ", department=" + department +
                 ", hoursWorked=" + hoursWorked +
-                ", isManager=" + isManager +
-                ", isAdmin=" + isAdmin +
+                ", manager=" + manager +
+                ", admin=" + admin +
                 '}';
     }
 }
