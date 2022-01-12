@@ -1,15 +1,17 @@
 package com.revature.models;
 
-import java.util.List;
 
-public class Manager extends User {
-
-    //constructors
-    public Manager(int id, String firstName, String lastName, String fullName, int dept, List<Integer> hoursWorked, String password) {
-        super(id, firstName, lastName, fullName, dept, hoursWorked, password);
-    }
+public class Manager extends Employee{
+    //Constructors
+//    public Manager(String name, String userName, String password, int department, int hoursWorked, boolean isManager, boolean isAdmin) {
+//        super(name, userName, password, department, hoursWorked, isManager, isAdmin);
+//    }
 
     public Manager() {
     }
 
+    @Override
+    public boolean isManager() {
+        return true;
+    }
 }
