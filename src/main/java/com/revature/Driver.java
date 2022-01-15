@@ -9,12 +9,12 @@ import io.javalin.Javalin;
 public class Driver {
     private static Javalin app;
    // private static Logger log = LoggerFactory.getLogger(Driver.class);
-    public static void main(String[] args) {
-
-        configure();
-
-        app.start(); //Synchronously starts the application instance on the configured port
-    }
+//    public static void main(String[] args) {
+//
+//        configure();
+//
+//        app.start(); //Synchronously starts the application instance on the configured port
+//    }
 
     public static void configure(Controller... controllers){
 

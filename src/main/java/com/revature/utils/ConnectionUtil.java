@@ -1,6 +1,33 @@
 package com.revature.utils;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 public class ConnectionUtil {
 
+    public static Connection getConnection() throws SQLException {
+         //register the JDBC Driver
+        try {
+            Class.forName(("org.postgres.Driver"));
+        } catch(ClassNotFoundException e){
+            e.printStackTrace();
+        }
+        //contains DB endpoint, port # and DB name
+        String url = "jdbc:postgresql://javafs220103.cbcrwq0mor94.us-east-1.rds.amazonaws.com:5432/employee_db";
+        String username = System.getenv("SQLUsername");
+        String password = System.getenv("SQLPassword"); //hidden in environment variables
 
+        return DriverManager.getConnection(url, username, password);
+    }
+
+    public static void main(String[] args) {
+        try{
+            getConnection();
+            System.out.println("Connection Successful");
+        } catch(SQLException e) {
+            System.out.println("Connection Failed");
+            e.printStackTrace();
+        }
+    }
 }
