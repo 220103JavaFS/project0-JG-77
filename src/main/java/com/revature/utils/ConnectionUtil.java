@@ -15,8 +15,8 @@ public class ConnectionUtil {
         }
         //contains DB endpoint, port # and DB name
         String url = "jdbc:postgresql://javafs220103.cbcrwq0mor94.us-east-1.rds.amazonaws.com:5432/employee_db";
-        String username = System.getenv("SQLUsername");
-        String password = System.getenv("SQLPassword"); //hidden in environment variables
+        String username = System.getenv("SQLUsername");//hidden in environment variables
+        String password = System.getenv("SQLPassword");//Run --> Edit Config.
 
         return DriverManager.getConnection(url, username, password);
     }
