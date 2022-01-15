@@ -21,6 +21,7 @@ public class Roles {
     public void setEmpRole(String empRole) {
         this.empRole = empRole;
     }
+
     //hashCode, equals, toString
     @Override
     public boolean equals(Object o) {
