@@ -3,7 +3,6 @@ package com.revature;
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
 
-import com.revature.controller.Controller;
 import io.javalin.Javalin;
 
 public class Driver {
