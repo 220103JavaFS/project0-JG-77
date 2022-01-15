@@ -18,6 +18,12 @@ dependencies {
     //Javalin dependency
     // https://mvnrepository.com/artifact/io.javalin/javalin
     implementation group: 'io.javalin', name: 'javalin', version: '4.1.1'
+    //Jackson Databind dependency
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.13.1'
+    // Postgres JDBC
+    // https://mvnrepository.com/artifact/org.postgresql/postgresql
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.3.1'
 }
 
 test {
