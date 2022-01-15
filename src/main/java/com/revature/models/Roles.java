@@ -10,7 +10,6 @@ public class Roles {
     public Roles(String empRole) {
         this.empRole = empRole;
     }
-
     public Roles() {
     }
 
