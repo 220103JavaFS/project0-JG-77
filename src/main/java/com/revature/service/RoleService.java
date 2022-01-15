@@ -10,8 +10,8 @@ public class RoleService {
 
     private RoleDAO roleDAO = new RoleDAOImp(); //call interface RoleDAO using RoleDAOImp class implementation
 
-    public List<Roles> findAll(){
-        return roleDAO.findAllRoles();
+    public List<Roles> findRolesAll(){
+        return roleDAO.findAllRoles(); //from RoleDAO
     }
 
 }
