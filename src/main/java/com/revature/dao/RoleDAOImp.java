@@ -1,12 +1,10 @@
 package com.revature.dao;
 
 import com.revature.models.Roles;
+import com.revature.models.Employee;
 import com.revature.utils.ConnectionUtil;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,11 +40,46 @@ public class RoleDAOImp implements RoleDAO{
 
     @Override
     public Roles findByRole(String roleName) {
-        return null;
+        try (Connection connect = ConnectionUtil.getConnection()){
+            String sql = "SELECT * FROM roles WHERE emp_role = ?;";//? used for prepared statement, prevents injection
+
+            PreparedStatement statement = connect.prepareStatement(sql);
+
+            statement.setString(1, roleName); // 1 = ? in sql string --> replaces ? with roleName
+
+            ResultSet result = statement.executeQuery();
+
+            Roles roles = new Roles();
+
+            if(result.next()){
+                //getting a string from result
+                roles.setEmpRole(result.getString("emp_role")); //using setter method to store record in role object
+            }
+
+            return roles;
+
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return new Roles();
     }
 
     @Override
     public boolean updateRole(Roles roles) {
+        try (Connection connect = ConnectionUtil.getConnection()){
+            String sql = "UPDATE employees SET emp_role = ? WHERE username = ?;"; //update roles by selecting specific username
+
+            PreparedStatement statement = connect.prepareStatement(sql);
+
+            statement.setString(1, roles.getEmpRole());
+            statement.setString(2, Employee.getUserName());
+
+            statement.execute();
+            return  true;
+
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
         return false;
     }
 }
