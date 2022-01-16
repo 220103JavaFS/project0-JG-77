@@ -3,10 +3,11 @@ package com.revature.models;
 import java.util.Objects;
 
 public class Employee {
+
     private String firstName;
     private String lastName;
-    private String userName;
-    private String empPassword;
+    private static String userName; //made static
+    private static String empPassword;
     private int hoursWorked;
     private Roles empRole;
     private Department depNum;
@@ -42,7 +43,7 @@ public class Employee {
         this.lastName = lastName;
     }
 
-    public String getUserName() {
+    public static String getUserName() {
         return userName;
     }
 
@@ -50,7 +51,7 @@ public class Employee {
         this.userName = userName;
     }
 
-    public String getEmpPassword() {
+    public static String getEmpPassword() {
         return empPassword;
     }
 
@@ -96,16 +97,4 @@ public class Employee {
         return Objects.hash(getFirstName(), getLastName(), getUserName(), getEmpPassword(), getHoursWorked(), getEmpRole(), getDepNum());
     }
 
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", userName='" + userName + '\'' +
-                ", empPassword='" + empPassword + '\'' +
-                ", hoursWorked=" + hoursWorked +
-                ", empRole=" + empRole +
-                ", depNum=" + depNum +
-                '}';
-    }
 }

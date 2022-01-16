@@ -4,6 +4,7 @@ package com.revature;
 //import org.slf4j.LoggerFactory;
 
 import com.revature.controller.Controller;
+import com.revature.controller.Login;
 import com.revature.controller.RoleController;
 import io.javalin.Javalin;
 
@@ -15,7 +16,7 @@ public class Driver {
 
     public static void main(String[] args) {
         app = Javalin.create();
-        configure(new RoleController());
+        configure(new RoleController(), new Login());
 
         app.start(); //Synchronously starts the application instance on the configured port
     }
