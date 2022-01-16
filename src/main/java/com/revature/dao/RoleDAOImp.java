@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RoleDAOImp implements RoleDAO{
+
     @Override
     public List<Roles> findAllRoles() {
         //include resources block to close connection to DB after every use
