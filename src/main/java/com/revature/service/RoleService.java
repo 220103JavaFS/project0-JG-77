@@ -14,4 +14,11 @@ public class RoleService {
         return roleDAO.findAllRoles(); //from RoleDAO
     }
 
+    public Roles findRole(String roleName){
+        return roleDAO.findByRole(roleName);
+    }
+
+    public boolean updateRole(Roles roles){
+        return roleDAO.updateRole(roles);
+    }
 }
