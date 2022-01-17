@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class Employee {
 
+    private int employeeID;
     private String firstName;
     private String lastName;
     private static String userName; //made static
@@ -23,10 +24,28 @@ public class Employee {
         this.depNum = depNum;
     }
 
+    public Employee(int employeeID, String firstName, String lastName, int hoursWorked, Roles empRole, Department depNum) {
+        this.employeeID = employeeID;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.hoursWorked = hoursWorked;
+        this.empRole = empRole;
+        this.depNum = depNum;
+    }
+
     public Employee() {
     }
 
     //Getters & setters
+
+    public int getEmployeeID() {
+        return employeeID;
+    }
+
+    public void setEmployeeID(int employeeID) {
+        this.employeeID = employeeID;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -82,19 +101,30 @@ public class Employee {
     public void setDepNum(Department depNum) {
         this.depNum = depNum;
     }
-    //hashCode, equals, toString
 
+    //hashCode, equals, toString
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return getHoursWorked() == employee.getHoursWorked() && Objects.equals(getFirstName(), employee.getFirstName()) && Objects.equals(getLastName(), employee.getLastName()) && Objects.equals(getUserName(), employee.getUserName()) && Objects.equals(getEmpPassword(), employee.getEmpPassword()) && Objects.equals(getEmpRole(), employee.getEmpRole()) && Objects.equals(getDepNum(), employee.getDepNum());
+        return getEmployeeID() == employee.getEmployeeID() && getHoursWorked() == employee.getHoursWorked() && Objects.equals(getFirstName(), employee.getFirstName()) && Objects.equals(getLastName(), employee.getLastName()) && Objects.equals(getEmpRole(), employee.getEmpRole()) && Objects.equals(getDepNum(), employee.getDepNum());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getFirstName(), getLastName(), getUserName(), getEmpPassword(), getHoursWorked(), getEmpRole(), getDepNum());
+        return Objects.hash(getEmployeeID(), getFirstName(), getLastName(), getHoursWorked(), getEmpRole(), getDepNum());
     }
 
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "employeeID=" + employeeID +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", hoursWorked=" + hoursWorked +
+                ", empRole=" + empRole +
+                ", depNum=" + depNum +
+                '}';
+    }
 }
