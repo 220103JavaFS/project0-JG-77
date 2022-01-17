@@ -41,7 +41,7 @@ public class RoleDAOImp implements RoleDAO{
     @Override
     public Roles findByRole(String roleName) {
         try (Connection connect = ConnectionUtil.getConnection()){
-            String sql = "SELECT * FROM roles WHERE emp_role = ?;";//? used for prepared statement, prevents injection
+            String sql = "SELECT * FROM employees WHERE emp_role = ?;";//? used for prepared statement, prevents injection
 
             PreparedStatement statement = connect.prepareStatement(sql);
 
