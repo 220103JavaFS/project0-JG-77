@@ -4663,3 +4663,19 @@ java.util.concurrent.TimeoutException: Idle timeout expired: 30002/30000 ms
 11:07:25.141 [] [qtp246550802-19] DEBUG org.eclipse.jetty.io.ChannelEndPoint - changeInterests p=false 0->1 for SocketChannelEndPoint@366e0237{l=/0:0:0:0:0:0:0:1:8080,r=/0:0:0:0:0:0:0:1:56633,OPEN,fill=FI,flush=-,to=0/30000}{io=0/1,kio=0,kro=1}->HttpConnection@38a9ea8a[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3c966947{s=START}]=>HttpChannelOverHttp@7994e0b1{s=HttpChannelState@3f2d2a0e{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=null,age=0}
 11:07:25.141 [] [qtp246550802-19] DEBUG o.e.jetty.server.HttpConnection - HttpConnection@38a9ea8a::SocketChannelEndPoint@366e0237{l=/0:0:0:0:0:0:0:1:8080,r=/0:0:0:0:0:0:0:1:56633,OPEN,fill=FI,flush=-,to=0/30000}{io=1/1,kio=1,kro=1}->HttpConnection@38a9ea8a[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3c966947{s=START}]=>HttpChannelOverHttp@7994e0b1{s=HttpChannelState@3f2d2a0e{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=null,age=0} onFillable exit HttpChannelState@3f2d2a0e{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0} null
 11:07:25.141 [] [qtp246550802-16] DEBUG org.eclipse.jetty.io.ChannelEndPoint - Key interests updated 0 -> 1 on SocketChannelEndPoint@366e0237{l=/0:0:0:0:0:0:0:1:8080,r=/0:0:0:0:0:0:0:1:56633,OPEN,fill=FI,flush=-,to=0/30000}{io=1/1,kio=1,kro=1}->HttpConnection@38a9ea8a[p=HttpParser{s=START,0 of -1},g=HttpGenerator@3c966947{s=START}]=>HttpChannelOverHttp@7994e0b1{s=HttpChannelState@3f2d2a0e{s=IDLE rs=BLOCKING os=OPEN is=IDLE awp=false se=false i=true al=0},r=1,c=false/false,a=IDLE,uri=null,age=0}
+15:54:43.222 [] [main] INFO  io.javalin.Javalin - 
+       __                      __ _            __ __
+      / /____ _ _   __ ____ _ / /(_)____      / // /
+ __  / // __ `/| | / // __ `// // // __ \    / // /_
+/ /_/ // /_/ / | |/ // /_/ // // // / / /   /__  __/
+\____/ \__,_/  |___/ \__,_//_//_//_/ /_/      /_/
+
+          https://javalin.io/documentation
+
+15:54:43.240 [] [main] DEBUG org.eclipse.jetty.util.log - Logging to Logger[org.eclipse.jetty.util.log] via org.eclipse.jetty.util.log.Slf4jLog
+15:54:43.244 [] [main] INFO  org.eclipse.jetty.util.log - Logging initialized @439ms to org.eclipse.jetty.util.log.Slf4jLog
+15:54:43.245 [] [main] INFO  io.javalin.Javalin - Starting Javalin ...
+15:54:43.265 [] [main] INFO  io.javalin.Javalin - You are running Javalin 4.1.1 (released October 10, 2021. Your Javalin version is 99 days old. Consider upgrading!).
+15:54:43.265 [] [main] INFO  io.javalin.Javalin - No port specified, starting on port 8080. Call start(port) to change ports.
+15:54:43.547 [] [main] INFO  io.javalin.Javalin - Listening on http://localhost:8080/
+15:54:43.547 [] [main] INFO  io.javalin.Javalin - Javalin started in 303ms \o/

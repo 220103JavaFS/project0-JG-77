@@ -17,7 +17,7 @@ public class DepartmentController  implements Controller{
 //            ctx.status(401);
 //        }
 
-        ctx.json(departmentService.findALLDepartments()); //method from roleService class
+        ctx.json(departmentService.findALLDepartments()); //method from DepartmentService class
         ctx.status(200);
     };
 
