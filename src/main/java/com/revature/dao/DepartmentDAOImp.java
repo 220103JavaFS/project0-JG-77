@@ -2,7 +2,6 @@ package com.revature.dao;
 
 import com.revature.models.Department;
 import com.revature.models.Employee;
-import com.revature.models.Roles;
 import com.revature.utils.ConnectionUtil;
 
 import java.sql.*;
