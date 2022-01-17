@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface DepartmentDAO {
 
-    public List<Department> findAllDept();
-    public Department findByDept(int deptNum);
-    public boolean updateDept(Department department);
-    public boolean addDept(Department department);
+    List<Department> findAllDept();
+    Department findByDept(int deptNum);
+    boolean updateDept(Department department);
+    boolean addDept(Department department);
 }
