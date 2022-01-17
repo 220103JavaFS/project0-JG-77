@@ -95,7 +95,7 @@ public class DepartmentDAOImp implements DepartmentDAO{
             statement.setInt(1, department.getDepNum());
 
             statement.execute();
-            return  true;
+            return true;
 
         }catch (SQLException e){
             e.printStackTrace();

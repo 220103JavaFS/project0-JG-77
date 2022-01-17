@@ -13,7 +13,8 @@ public class Employee {
     private Roles empRole;
     private Department depNum;
 
-    //constructors
+    //3 constructors --> No args, all args, args excluding id variable
+    //no id variable to let DB give a serialized employee id
     public Employee(String firstName, String lastName, String userName, String empPassword, int hoursWorked, Roles empRole, Department depNum) {
         this.firstName = firstName;
         this.lastName = lastName;
