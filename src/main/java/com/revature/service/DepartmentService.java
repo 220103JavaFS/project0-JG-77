@@ -6,7 +6,7 @@ import com.revature.models.Department;
 
 import java.util.List;
 
-public class DepartmentService {
+    public class DepartmentService {
     //DeptDAO object with DAO implementation
     DepartmentDAO departmentDAO = new DepartmentDAOImp();
 
