@@ -1,6 +1,7 @@
 package com.revature.dao;
 
 import com.revature.models.Department;
+import com.revature.models.Employee;
 import com.revature.models.Roles;
 import com.revature.utils.ConnectionUtil;
 
@@ -65,11 +66,41 @@ public class DepartmentDAOImp implements DepartmentDAO{
 
     @Override
     public boolean updateDept(Department department) {
+        try (Connection connect = ConnectionUtil.getConnection()){
+            //update department # by selecting specific username
+            String sql = "UPDATE employees SET dept_num = ? WHERE username = ?;";
+
+            PreparedStatement statement = connect.prepareStatement(sql);
+
+            statement.setInt(1, department.getDepNum());
+            statement.setString(2, Employee.getUserName());
+
+            statement.execute();
+            return  true;
+
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
         return false;
     }
 
     @Override
     public boolean addDept(Department department) {
+        try (Connection connect = ConnectionUtil.getConnection()){
+
+            //add new department #
+            String sql = "INSERT INTO departments (dept_num) VALUES (?);";
+
+            PreparedStatement statement = connect.prepareStatement(sql);
+
+            statement.setInt(1, department.getDepNum());
+
+            statement.execute();
+            return  true;
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
         return false;
     }
 }
