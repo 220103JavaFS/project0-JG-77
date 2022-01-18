@@ -3,5 +3,5 @@ package com.revature.models;
 public class UserDTO {
 
     public String userName;
-    public String passWord;
+    public String empPassword;
 }

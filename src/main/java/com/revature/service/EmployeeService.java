@@ -3,8 +3,6 @@ package com.revature.service;
 import com.revature.dao.EmployeeDAO;
 import com.revature.dao.EmployeeDAOImp;
 import com.revature.models.Employee;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeeService {

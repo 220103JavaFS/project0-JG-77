@@ -14,7 +14,7 @@ public class Driver {
 
     public static void main(String[] args) {
         app = Javalin.create();
-        configure(new RoleController(), new DepartmentController(), new EmployeeController()); //, new Login()
+        configure(new RoleController(), new DepartmentController(), new EmployeeController(), new Login()); //, new Login()
 
         app.start(); //Synchronously starts the application instance on the configured port
     }

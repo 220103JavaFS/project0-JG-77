@@ -5,7 +5,6 @@ import com.revature.models.Employee;
 import com.revature.models.Roles;
 import com.revature.utils.ConnectionUtil;
 
-import javax.management.relation.Role;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -139,7 +138,7 @@ public class EmployeeDAOImp implements EmployeeDAO{
             int count = 0;
             statement.setString(++count, employee.getFirstName());
             statement.setString(++count, employee.getLastName());
-            statement.setString(++count, employee.getUserName()); //
+            statement.setString(++count, employee.getUserName());
             statement.setString(++count, employee.getEmpPassword());
             statement.setInt(++count, employee.getHoursWorked());
 
@@ -177,4 +176,33 @@ public class EmployeeDAOImp implements EmployeeDAO{
 
         return false;
     }
+
+    @Override
+    public Employee verifyPassword(String username, String password) {
+        try (Connection connect = ConnectionUtil.getConnection()) {
+            String sql = "SELECT * FROM employees WHERE (username = ?) AND (emp_password = ?);";
+
+            PreparedStatement statement = connect.prepareStatement(sql);
+
+            ResultSet result = statement.executeQuery(sql);
+
+            Employee employee = new Employee();
+
+            while (result.next()) {
+                //employee.setUserName()
+                employee.setUserName(result.getString("username"));
+                employee.setEmpPassword(result.getString("emp_password"));
+//                result.getString("username");
+//                result.getString("emp_password");
+            }
+
+            return employee;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return new Employee();
+    }
+
+
 }
