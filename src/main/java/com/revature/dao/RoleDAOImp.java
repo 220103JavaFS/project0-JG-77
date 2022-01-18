@@ -67,12 +67,14 @@ public class RoleDAOImp implements RoleDAO{
     @Override
     public boolean updateRole(Roles roles) {
         try (Connection connect = ConnectionUtil.getConnection()){
+            Employee employee = new Employee();
+
             String sql = "UPDATE employees SET emp_role = ? WHERE username = ?;"; //update roles by selecting specific username
 
             PreparedStatement statement = connect.prepareStatement(sql);
 
             statement.setString(1, roles.getEmpRole());
-            statement.setString(2, Employee.getUserName());
+            statement.setString(2, employee.getUserName());// reference getter from Employee model
 
             statement.execute();
             return  true;

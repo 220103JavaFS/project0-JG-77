@@ -109,8 +109,8 @@ public class EmployeeDAOImp implements EmployeeDAO{
             int count = 0;
             statement.setString(++count, employee.getFirstName());
             statement.setString(++count, employee.getLastName());
-            statement.setString(++count, Employee.getUserName());
-            statement.setString(++count, Employee.getEmpPassword());
+            statement.setString(++count, employee.getUserName());
+            statement.setString(++count, employee.getEmpPassword());
             statement.setInt(++count, employee.getHoursWorked());
 
             Department department = new Department(); //new department object to access getter method
@@ -139,7 +139,7 @@ public class EmployeeDAOImp implements EmployeeDAO{
             int count = 0;
             statement.setString(++count, employee.getFirstName());
             statement.setString(++count, employee.getLastName());
-            statement.setString(++count, employee.getUserName());
+            statement.setString(++count, employee.getUserName()); //
             statement.setString(++count, employee.getEmpPassword());
             statement.setInt(++count, employee.getHoursWorked());
 

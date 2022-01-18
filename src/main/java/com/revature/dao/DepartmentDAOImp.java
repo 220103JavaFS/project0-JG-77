@@ -66,13 +66,14 @@ public class DepartmentDAOImp implements DepartmentDAO{
     @Override
     public boolean updateDept(Department department) {
         try (Connection connect = ConnectionUtil.getConnection()){
+            Employee employee = new Employee();
             //update department # by selecting specific username
             String sql = "UPDATE employees SET dept_num = ? WHERE username = ?;";
 
             PreparedStatement statement = connect.prepareStatement(sql);
 
             statement.setInt(1, department.getDepNum());
-            statement.setString(2, Employee.getUserName());
+            statement.setString(2, employee.getUserName());
 
             statement.execute();
             return  true;

@@ -7,8 +7,8 @@ public class Employee {
     private int employeeID;
     private String firstName;
     private String lastName;
-    private static String userName; //made static
-    private static String empPassword;
+    private String userName; //made static
+    private String empPassword;
     private int hoursWorked;
     private Roles empRole;
     private Department depNum;
@@ -63,7 +63,7 @@ public class Employee {
         this.lastName = lastName;
     }
 
-    public static String getUserName() {
+    public String getUserName() {
         return userName;
     }
 
@@ -71,7 +71,7 @@ public class Employee {
         this.userName = userName;
     }
 
-    public static String getEmpPassword() {
+    public String getEmpPassword() {
         return empPassword;
     }
 
