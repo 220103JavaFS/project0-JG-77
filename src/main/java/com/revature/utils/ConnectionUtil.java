@@ -9,7 +9,7 @@ public class ConnectionUtil {
     public static Connection getConnection() throws SQLException {
          //register the JDBC Driver
         try {
-            Class.forName(("org.postgres.Driver"));
+            Class.forName("org.postgres.Driver");
         } catch(ClassNotFoundException e){
             e.printStackTrace();
         }

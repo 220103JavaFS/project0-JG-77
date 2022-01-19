@@ -184,7 +184,9 @@ public class EmployeeDAOImp implements EmployeeDAO{
 
             PreparedStatement statement = connect.prepareStatement(sql);
 
-            ResultSet result = statement.executeQuery(sql);
+            statement.setString(1, username);
+            statement.setString(2, password);
+            ResultSet result = statement.executeQuery();
 
             Employee employee = new Employee();
 
