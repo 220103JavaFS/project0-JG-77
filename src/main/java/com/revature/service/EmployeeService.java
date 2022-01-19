@@ -32,4 +32,8 @@ public class EmployeeService {
     public List<Employee> FindEmpInRoles(String role){
         return employeeDAO.findInRoles(role);
     };
+
+    public List<Employee> FindEmpInDept(int dept){
+        return employeeDAO.findInDept(dept);
+    }
 }

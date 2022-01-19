@@ -94,6 +94,18 @@ public class EmployeeController implements Controller{
         }
     };
 
+    Handler findEmpInDept = (ctx) ->{
+        if(ctx.req.getSession(false)!=null) {
+            String deptInt = ctx.pathParam("dept");
+            int deptNum = Integer.parseInt(deptInt); //taking param string and converting to integer
+            List<Employee> employee = employeeService.FindEmpInDept(deptNum);
+            ctx.json(employee);
+            ctx.status(200);
+        } else {
+            ctx.status(401);
+        }
+    };
+
     @Override
     public void addRoutes(Javalin app) {
         app.get("/employee", getEmployees);
@@ -102,5 +114,6 @@ public class EmployeeController implements Controller{
         app.post("/employee", addEmployee);
         app.delete("/employee/{empID}", removeEmployee);
         app.get("/employees/{role}", findEmpInRoles);
+        app.get("/employeedept/{dept}", findEmpInDept);
     }
 }

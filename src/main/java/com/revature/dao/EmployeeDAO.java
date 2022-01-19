@@ -13,5 +13,5 @@ public interface EmployeeDAO {
     boolean terminateEmp(int id);
     String verifyPassword(String username);
     List <Employee> findInRoles(String role);
-    //List <Employee> findInDept(int dept);
+    List <Employee> findInDept(int dept);
 }
