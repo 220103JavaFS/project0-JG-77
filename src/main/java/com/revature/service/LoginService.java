@@ -12,10 +12,8 @@ public class LoginService {
         // BCrypt hashes a password
         String hashedPW = BCrypt.hashpw(passWord, BCrypt.gensalt());
 
-        System.out.println(employeeDAO.verifyPassword(userName)); //returns null
+        String dbPassword = employeeDAO.verifyPassword(userName); //password is returned from DB
 
-        String dbPassword = employeeDAO.verifyPassword(userName);
-
-        return BCrypt.checkpw(dbPassword, hashedPW);
+        return BCrypt.checkpw(dbPassword, hashedPW); //checking returned pw & hashed pw
     }
 }

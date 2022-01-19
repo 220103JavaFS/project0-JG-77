@@ -25,6 +25,5 @@ public class Login implements Controller{
     @Override
     public void addRoutes(Javalin app) {
         app.post("/login", this.loginUser);
-
     }
 }
