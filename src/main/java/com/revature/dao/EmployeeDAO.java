@@ -11,6 +11,6 @@ public interface EmployeeDAO {
     boolean addEmp(Employee employee);
     boolean updateEmp(Employee employee);
     boolean terminateEmp(int id);
-    String verifyPassword(String username, String password);
+    String verifyPassword(String username);
 
 }

@@ -8,18 +8,14 @@ public class LoginService {
 
    EmployeeDAO employeeDAO = new EmployeeDAOImp();
 
-    //logic for retrieving username and password from database
     public boolean loginValid(String userName, String passWord) {
         // BCrypt hashes a password
         String hashedPW = BCrypt.hashpw(passWord, BCrypt.gensalt());
 
-        System.out.println(hashedPW);
-        System.out.println("---------------------------");
+        System.out.println(employeeDAO.verifyPassword(userName)); //returns null
 
-        employeeDAO.verifyPassword(userName, hashedPW);
-        String dbPassword = employeeDAO.verifyPassword(userName, hashedPW);
+        String dbPassword = employeeDAO.verifyPassword(userName);
 
-        System.out.println(dbPassword);
-        return BCrypt.checkpw(passWord, dbPassword);
+        return BCrypt.checkpw(dbPassword, hashedPW);
     }
 }

@@ -178,32 +178,26 @@ public class EmployeeDAOImp implements EmployeeDAO{
     }
 
     @Override
-    public String verifyPassword(String username, String password) {
+    public String verifyPassword(String username) {
         try (Connection connect = ConnectionUtil.getConnection()) {
-            String sql = "SELECT emp_password FROM employees WHERE (username = ?) AND (emp_password = ?);";
+            String sql = "SELECT emp_password FROM employees WHERE username = ?;";
 
             PreparedStatement statement = connect.prepareStatement(sql);
 
             statement.setString(1, username);
-            statement.setString(2, password);
+            //statement.setString(2, password);
+
             ResultSet result = statement.executeQuery();
 
-
-
             while (result.next()) {
-
-                result.getString("emp_password");
-                String pw = result.getString("emp_password");
-                System.out.println(pw);
-                return pw;
+               return result.getString("emp_password");
             }
-
+                //return result.getString("emp_password");
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
     }
-
 
 }

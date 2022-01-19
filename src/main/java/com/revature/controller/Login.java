@@ -1,11 +1,9 @@
 package com.revature.controller;
 
 import com.revature.models.UserDTO;
-
 import com.revature.service.LoginService;
 import io.javalin.Javalin;
 import io.javalin.http.Handler;
-
 
 public class Login implements Controller{
 
@@ -23,8 +21,10 @@ public class Login implements Controller{
         }
     };
 
+
     @Override
     public void addRoutes(Javalin app) {
         app.post("/login", this.loginUser);
+
     }
 }
