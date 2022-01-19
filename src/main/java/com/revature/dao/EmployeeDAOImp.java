@@ -178,9 +178,9 @@ public class EmployeeDAOImp implements EmployeeDAO{
     }
 
     @Override
-    public Employee verifyPassword(String username, String password) {
+    public String verifyPassword(String username, String password) {
         try (Connection connect = ConnectionUtil.getConnection()) {
-            String sql = "SELECT * FROM employees WHERE (username = ?) AND (emp_password = ?);";
+            String sql = "SELECT emp_password FROM employees WHERE (username = ?) AND (emp_password = ?);";
 
             PreparedStatement statement = connect.prepareStatement(sql);
 
@@ -188,22 +188,21 @@ public class EmployeeDAOImp implements EmployeeDAO{
             statement.setString(2, password);
             ResultSet result = statement.executeQuery();
 
-            Employee employee = new Employee();
+
 
             while (result.next()) {
-                //employee.setUserName()
-                employee.setUserName(result.getString("username"));
-                employee.setEmpPassword(result.getString("emp_password"));
-//                result.getString("username");
-//                result.getString("emp_password");
+
+                result.getString("emp_password");
+                String pw = result.getString("emp_password");
+                System.out.println(pw);
+                return pw;
             }
 
-            return employee;
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return new Employee();
+        return null;
     }
 
 

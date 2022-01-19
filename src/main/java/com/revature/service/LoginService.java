@@ -13,7 +13,13 @@ public class LoginService {
         // BCrypt hashes a password
         String hashedPW = BCrypt.hashpw(passWord, BCrypt.gensalt());
 
+        System.out.println(hashedPW);
+        System.out.println("---------------------------");
+
         employeeDAO.verifyPassword(userName, hashedPW);
-        return BCrypt.checkpw(passWord, hashedPW);
+        String dbPassword = employeeDAO.verifyPassword(userName, hashedPW);
+
+        System.out.println(dbPassword);
+        return BCrypt.checkpw(passWord, dbPassword);
     }
 }
