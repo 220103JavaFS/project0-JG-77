@@ -14,6 +14,6 @@ public class LoginService {
         String hashedPW = BCrypt.hashpw(passWord, BCrypt.gensalt());
 
         employeeDAO.verifyPassword(userName, hashedPW);
-        return BCrypt.checkpw(hashedPW, passWord);
+        return BCrypt.checkpw(passWord, hashedPW);
     }
 }
