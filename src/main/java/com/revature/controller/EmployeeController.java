@@ -2,9 +2,12 @@ package com.revature.controller;
 
 import com.revature.models.Department;
 import com.revature.models.Employee;
+import com.revature.models.Roles;
 import com.revature.service.EmployeeService;
 import io.javalin.Javalin;
 import io.javalin.http.Handler;
+
+import java.util.List;
 
 public class EmployeeController implements Controller{
 
@@ -80,6 +83,17 @@ public class EmployeeController implements Controller{
 
     };
 
+    Handler findEmpInRoles = (ctx) ->{
+        if(ctx.req.getSession(false)!=null) {
+            String roleType = ctx.pathParam("role");
+            List<Employee> employee = employeeService.FindEmpInRoles(roleType);
+            ctx.json(employee);
+            ctx.status(200);
+        } else {
+            ctx.status(401);
+        }
+    };
+
     @Override
     public void addRoutes(Javalin app) {
         app.get("/employee", getEmployees);
@@ -87,5 +101,6 @@ public class EmployeeController implements Controller{
         app.put("/employee", updateEmployee);
         app.post("/employee", addEmployee);
         app.delete("/employee/{empID}", removeEmployee);
+        app.get("/employees/{role}", findEmpInRoles);
     }
 }

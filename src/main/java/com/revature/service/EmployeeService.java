@@ -28,4 +28,8 @@ public class EmployeeService {
     public boolean terminateEmployee(int id){
         return employeeDAO.terminateEmp(id);
     }
+
+    public List<Employee> FindEmpInRoles(String role){
+        return employeeDAO.findInRoles(role);
+    };
 }

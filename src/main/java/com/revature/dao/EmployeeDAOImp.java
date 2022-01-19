@@ -185,19 +185,60 @@ public class EmployeeDAOImp implements EmployeeDAO{
             PreparedStatement statement = connect.prepareStatement(sql);
 
             statement.setString(1, username);
-            //statement.setString(2, password);
 
             ResultSet result = statement.executeQuery();
 
             while (result.next()) {
                return result.getString("emp_password");
             }
-                //return result.getString("emp_password");
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    public List<Employee> findInRoles(String role) { //returns all employees with specific role.
+        try (Connection connect = ConnectionUtil.getConnection()) {
+            String sql = "SELECT * FROM roles INNER JOIN employees ON roles.emp_role = employees.emp_role " +
+                    "WHERE roles.emp_role = ?;";
+            PreparedStatement statement = connect.prepareStatement(sql);
+
+            statement.setString(1, role);
+
+            ResultSet result = statement.executeQuery();
+
+            List<Employee> employeeList = new ArrayList<>();
+
+            while (result.next()){
+                Employee employee = new Employee();
+                employee.setEmployeeID(result.getInt("empl_id"));
+                employee.setFirstName(result.getString("first_name"));
+                employee.setLastName(result.getString("last_name"));
+                employee.setUserName(result.getString("username"));
+                employee.setEmpPassword(result.getString("emp_password"));
+                employee.setHoursWorked(result.getInt("hours_worked"));
+                String employeeRole = result.getString("emp_role");
+                if(employeeRole!= null){ //since role comes from another table, retrieve info from roleDAO
+                    Roles roles = roleDAO.findByRole(employeeRole);
+                    employee.setEmpRole(roles);
+                }
+
+                int employeeDept = result.getInt("dept_num");
+                String empDeptString = String.valueOf(employeeDept);
+                if(empDeptString != null){
+                    Department department = departmentDAO.findByDept(employeeDept);
+                    employee.setDepNum(department);
+                }
+                employeeList.add(employee);
+            }
+            return employeeList;
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return new ArrayList<Employee>();
     }
 
 }
