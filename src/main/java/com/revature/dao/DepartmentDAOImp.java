@@ -26,6 +26,7 @@ public class DepartmentDAOImp implements DepartmentDAO{
                 Department department = new Department();
                 //getting a integer from result
                 department.setDepNum(result.getInt("dept_num")); //changed getString to getInt for integer value
+                department.setDeptName(result.getString("dept_name"));
 
                 deptList.add(department);
             }
@@ -40,7 +41,7 @@ public class DepartmentDAOImp implements DepartmentDAO{
     @Override
     public Department findByDept(int deptNum) {
         try (Connection connect = ConnectionUtil.getConnection()){
-            String sql = "SELECT * FROM employees WHERE dept_num = ?;"; //? used for prepared statement
+            String sql = "SELECT * FROM departments WHERE dept_num = ?;"; //? used for prepared statement
 
             PreparedStatement statement = connect.prepareStatement(sql);
 
@@ -52,7 +53,8 @@ public class DepartmentDAOImp implements DepartmentDAO{
 
             if(result.next()){
                 //getting a string from result
-                department.setDepNum(result.getInt("dept_num")); //getting Int from table & setting value in dept object
+                department.setDepNum(result.getInt("dept_num"));
+                department.setDeptName(result.getString("dept_name"));//getting Int from table & setting value in dept object
             }
 
             return department;
@@ -66,14 +68,14 @@ public class DepartmentDAOImp implements DepartmentDAO{
     @Override
     public boolean updateDept(Department department) {
         try (Connection connect = ConnectionUtil.getConnection()){
-            Employee employee = new Employee();
-            //update department # by selecting specific username
-            String sql = "UPDATE employees SET dept_num = ? WHERE username = ?;";
+            //update department # for  employee by selecting specific username
+            String sql = "UPDATE departments SET dept_num = ?, dept_name = ? WHERE dept_num = ?;";
 
             PreparedStatement statement = connect.prepareStatement(sql);
 
             statement.setInt(1, department.getDepNum());
-            statement.setString(2, employee.getUserName());
+            statement.setString(2, department.getDeptName());
+            statement.setInt(3, department.getDepNum());
 
             statement.execute();
             return  true;
@@ -89,11 +91,12 @@ public class DepartmentDAOImp implements DepartmentDAO{
         try (Connection connect = ConnectionUtil.getConnection()){
 
             //add new department #
-            String sql = "INSERT INTO departments (dept_num) VALUES (?);";
+            String sql = "INSERT INTO departments (dept_num, dept_name) VALUES (?,?);";
 
             PreparedStatement statement = connect.prepareStatement(sql);
 
             statement.setInt(1, department.getDepNum());
+            statement.setString(2, department.getDeptName());
 
             statement.execute();
             return true;

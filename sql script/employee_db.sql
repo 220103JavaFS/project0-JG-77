@@ -1,13 +1,15 @@
 DROP TABLE IF EXISTS roles CASCADE;
 
 CREATE TABLE roles(
-emp_role VARCHAR(20) PRIMARY KEY
+emp_role VARCHAR(20) PRIMARY KEY,
+permissions BOOLEAN
 );
 
 DROP TABLE IF EXISTS departments CASCADE;
 
 CREATE TABLE departments(
-dept_num INTEGER PRIMARY KEY
+dept_num INTEGER PRIMARY KEY,
+dept_name VARCHAR UNIQUE
 );
 
 DROP TABLE IF EXISTS employees;
@@ -22,20 +24,19 @@ hours_worked INTEGER
 );
 
 
+--defining departments
+INSERT INTO departments(dept_num, dept_name)
+VALUES (0, 'New Hires'), (1, 'Production'), (2, 'Sales'), (3, 'Human Resources');
+
+--defining role values
+INSERT INTO roles(emp_role, permissions)
+VALUES ('employee', FALSE),
+('manager', TRUE ),
+('admin', TRUE);
 
 --adding new columns for foreign keys; determine if employee is manager or admin
 ALTER TABLE employees ADD COLUMN dept_num INTEGER REFERENCES departments(dept_num);
 ALTER TABLE employees ADD COLUMN emp_role VARCHAR(20) REFERENCES roles(emp_role);
-
---defining departments
-INSERT INTO departments(dept_num)
-VALUES (1), (2), (3);
-
---defining role values
-INSERT INTO roles(emp_role)
-VALUES ('employee'),
-('manager'),
-('admin');
 
 INSERT INTO employees(
 first_name,

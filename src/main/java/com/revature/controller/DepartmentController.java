@@ -15,7 +15,6 @@ public class DepartmentController  implements Controller{
     private DepartmentService departmentService = new DepartmentService();
 
     Handler getDepts = (ctx) ->{
-
         if(ctx.req.getSession(false)!=null) { //returns session object if cookie is valid
             ctx.json(departmentService.findALLDepartments()); //method from DepartmentService class
             ctx.status(200);
@@ -29,7 +28,6 @@ public class DepartmentController  implements Controller{
     };
 
     Handler getOneDept = (ctx) -> {
-
         if(ctx.req.getSession(false)!=null) { //returns session object if cookie is valid
             String deptNumString = ctx.pathParam("deptNum");
             int deptNum = Integer.parseInt(deptNumString); //taking param string and converting to integer
@@ -45,7 +43,6 @@ public class DepartmentController  implements Controller{
     };
 
     Handler updateDepartment = (ctx) -> {
-
         if(ctx.req.getSession(false)!=null) { //returns session object if cookie is valid
             Department department = ctx.bodyAsClass(Department.class);
             if(departmentService.updateDepartment(department)){
@@ -62,7 +59,6 @@ public class DepartmentController  implements Controller{
     };
 
     Handler addDepartment = (ctx) -> {
-
         if(ctx.req.getSession(false)!=null) { //returns session object if cookie is valid
             Department department = ctx.bodyAsClass(Department.class);
             if(departmentService.addDepartment(department)){

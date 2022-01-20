@@ -83,7 +83,7 @@ public class EmployeeDAOImp implements EmployeeDAO{
                 int employeeDept = result.getInt("dept_num");
                 String empDeptString = String.valueOf(employeeDept);
                     if(empDeptString != null){
-                        Department department = departmentDAO.findByDept(employeeDept);
+                       Department department = departmentDAO.findByDept(employeeDept);
                         employee.setDepNum(department);
                     }
 
@@ -120,6 +120,7 @@ public class EmployeeDAOImp implements EmployeeDAO{
 
             statement.execute();
             return true;
+
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -131,7 +132,7 @@ public class EmployeeDAOImp implements EmployeeDAO{
         try (Connection connect = ConnectionUtil.getConnection()){
             //add new employees
             String sql = "UPDATE employees SET first_name = ?, last_name = ?, username = ?, emp_password = ?, hours_worked = ?,"+
-                    "dept_num = ?, emp_role = ?  WHERE username = ?;";
+                    "dept_num =?, emp_role = ? WHERE username = ?;";
 
             PreparedStatement statement = connect.prepareStatement(sql);
 
@@ -165,9 +166,7 @@ public class EmployeeDAOImp implements EmployeeDAO{
 
             Statement statement = connect.createStatement();
 
-            ResultSet result = statement.executeQuery(sql);
-
-            result.close(); //Releases this result object's database and JDBC resources
+            statement.executeUpdate(sql); //executes DELETE query that returns nothing
             return true;
 
         }catch (SQLException e){

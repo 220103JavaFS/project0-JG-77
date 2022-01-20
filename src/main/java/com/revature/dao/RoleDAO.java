@@ -9,6 +9,6 @@ public interface RoleDAO {
     List<Roles> findAllRoles();
     Roles findByRole(String roleName);
     //no method to add roles since we only want 3 roles for 3 user tiers
-    boolean updateRole(Roles roles); //only allow between employee, admin, manager
+    boolean updateRole(Roles roles); //only allow between admin, manager
 
 }

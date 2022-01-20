@@ -26,6 +26,7 @@ public class RoleDAOImp implements RoleDAO{
             Roles role = new Roles();
             //getting a string from result
             role.setEmpRole(result.getString("emp_role")); //using setter method to store record in role object
+            role.setPermissions(result.getBoolean("permissions"));
 
             roleList.add(role);
         }
@@ -41,7 +42,7 @@ public class RoleDAOImp implements RoleDAO{
     @Override
     public Roles findByRole(String roleName) {
         try (Connection connect = ConnectionUtil.getConnection()){
-            String sql = "SELECT * FROM employees WHERE emp_role = ?;";//? used for prepared statement, prevents injection
+            String sql = "SELECT * FROM roles WHERE emp_role = ?;";//? used for prepared statement, prevents injection
 
             PreparedStatement statement = connect.prepareStatement(sql);
 
@@ -54,6 +55,7 @@ public class RoleDAOImp implements RoleDAO{
             if(result.next()){
                 //getting a string from result
                 roles.setEmpRole(result.getString("emp_role")); //using setter method to store record in role object
+                roles.setPermissions(result.getBoolean("permissions"));
             }
 
             return roles;
@@ -67,14 +69,14 @@ public class RoleDAOImp implements RoleDAO{
     @Override
     public boolean updateRole(Roles roles) {
         try (Connection connect = ConnectionUtil.getConnection()){
-            Employee employee = new Employee();
 
-            String sql = "UPDATE employees SET emp_role = ? WHERE username = ?;"; //update roles by selecting specific username
+            String sql = "UPDATE roles SET emp_role = ?, permissions = ? WHERE emp_role = ?;"; //update roles
 
             PreparedStatement statement = connect.prepareStatement(sql);
 
             statement.setString(1, roles.getEmpRole());
-            statement.setString(2, employee.getUserName());// reference getter from Employee model
+            statement.setBoolean(2, roles.isPermissions());// reference getter from Employee model
+            statement.setString(3, roles.getEmpRole());
 
             statement.execute();
             return  true;
