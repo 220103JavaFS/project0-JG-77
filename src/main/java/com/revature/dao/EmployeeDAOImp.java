@@ -4,6 +4,7 @@ import com.revature.models.Department;
 import com.revature.models.Employee;
 import com.revature.models.Roles;
 import com.revature.utils.ConnectionUtil;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -31,7 +32,10 @@ public class EmployeeDAOImp implements EmployeeDAO{
                 employee.setFirstName(result.getString("first_name"));
                 employee.setLastName(result.getString("last_name"));
                 employee.setUserName(result.getString("username"));
-                employee.setEmpPassword(result.getString("emp_password"));
+
+                String hashedPW = BCrypt.hashpw(result.getString("emp_password"), BCrypt.gensalt());
+
+                employee.setEmpPassword(hashedPW); //hash password to protect info
                 employee.setHoursWorked(result.getInt("hours_worked"));
                 String employeeRole = result.getString("emp_role");
                 if(employeeRole!= null){ //since role comes from another table, retrieve info from roleDAO
@@ -72,7 +76,9 @@ public class EmployeeDAOImp implements EmployeeDAO{
                 employee.setFirstName(result.getString("first_name"));
                 employee.setLastName(result.getString("last_name"));
                 employee.setUserName(result.getString("username"));
-                employee.setEmpPassword(result.getString("emp_password"));
+
+                String hashedPW = BCrypt.hashpw(result.getString("emp_password"), BCrypt.gensalt());
+                employee.setEmpPassword(hashedPW);
                 employee.setHoursWorked(result.getInt("hours_worked"));
                 String employeeRole = result.getString("emp_role");
                     if(employeeRole!= null){ //since role comes from another table, retrieve info from roleDAO
@@ -216,7 +222,9 @@ public class EmployeeDAOImp implements EmployeeDAO{
                 employee.setFirstName(result.getString("first_name"));
                 employee.setLastName(result.getString("last_name"));
                 employee.setUserName(result.getString("username"));
-                employee.setEmpPassword(result.getString("emp_password"));
+
+                String hashedPW = BCrypt.hashpw(result.getString("emp_password"), BCrypt.gensalt());
+                employee.setEmpPassword(hashedPW);
                 employee.setHoursWorked(result.getInt("hours_worked"));
                 String employeeRole = result.getString("emp_role");
                 if(employeeRole!= null){ //since role comes from another table, retrieve info from roleDAO
@@ -259,7 +267,10 @@ public class EmployeeDAOImp implements EmployeeDAO{
                 employee.setFirstName(result.getString("first_name"));
                 employee.setLastName(result.getString("last_name"));
                 employee.setUserName(result.getString("username"));
-                employee.setEmpPassword(result.getString("emp_password"));
+
+                String hashedPW = BCrypt.hashpw(result.getString("emp_password"), BCrypt.gensalt());
+                employee.setEmpPassword(hashedPW);
+
                 employee.setHoursWorked(result.getInt("hours_worked"));
                 String employeeRole = result.getString("emp_role");
                 if(employeeRole!= null){ //since role comes from another table, retrieve info from roleDAO
