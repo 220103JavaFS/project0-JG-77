@@ -50,6 +50,7 @@ public class DepartmentController  implements Controller{
                 log.info("Response received! Updated department number.");
             }else{
                 ctx.status(400);
+                log.warn("Invalid Request sent!");
             }
         } else {
             ctx.status(401);
@@ -66,6 +67,7 @@ public class DepartmentController  implements Controller{
                 log.info("Response received! New department added.");
             }else{
                 ctx.status(400);
+                log.warn("Invalid Request sent!");
             }
         } else {
             ctx.status(401);

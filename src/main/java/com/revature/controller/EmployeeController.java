@@ -52,6 +52,7 @@ public class EmployeeController implements Controller{
                 log.info("Response received! Employee add to the system!");
             }else{
                 ctx.status(400);
+                log.warn("Invalid Request sent!");
             }
         } else {
             ctx.status(401);
@@ -68,6 +69,7 @@ public class EmployeeController implements Controller{
                 log.info("Response received! Employee information updated.");
             }else{
                 ctx.status(400);
+                log.warn("Invalid Request sent!");
             }
         } else {
             ctx.status(401);
@@ -86,6 +88,7 @@ public class EmployeeController implements Controller{
                 log.info("Response received! Employee removed from system database.");
             }else{
                 ctx.status(400);
+                log.warn("Invalid Request sent!");
             }
         } else {
             ctx.status(401);
@@ -129,6 +132,7 @@ public class EmployeeController implements Controller{
                 log.info("Response received! Updated hours!");
             }else{
                 ctx.status(400);
+                log.warn("Invalid Request sent!");
             }
         } else {
             ctx.status(401);

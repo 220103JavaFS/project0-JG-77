@@ -48,6 +48,7 @@ public class RoleController implements Controller{
                 log.info("Response received! Role updated.");
             }else{
                 ctx.status(400);
+                log.warn("Invalid Request sent!");
             }
         } else {
             ctx.status(401);
