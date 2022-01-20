@@ -9,6 +9,11 @@
 
     <!-- This is a file appender that will print to a file. -->
     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
         <file>logs\\log.txt</file>
         <append>true</append>
         <encoder>

@@ -5,8 +5,12 @@ import com.revature.service.EmployeeService;
 import com.revature.service.LoginService;
 import io.javalin.Javalin;
 import io.javalin.http.Handler;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Login implements Controller{
+
+    private static Logger log = LoggerFactory.getLogger(Login.class);
 
     LoginService loginService = new LoginService();
     EmployeeService employeeService = new EmployeeService();
@@ -18,10 +22,12 @@ public class Login implements Controller{
 
             ctx.req.getSession().getAttribute("role"); //create httpSession object
             ctx.status(200);
+            log.info("Login Successful!");
 
         } else{
             ctx.req.getSession().invalidate(); //closes/rejects session if invalid user credentials
             ctx.status(401);
+            log.warn("Invalid login attempt!");
         }
     };
 
