@@ -86,7 +86,7 @@ public class EmployeeController implements Controller{
     Handler findEmpInRoles = (ctx) ->{
         if(ctx.req.getSession(false)!=null) {
             String roleType = ctx.pathParam("role");
-            List<Employee> employee = employeeService.FindEmpInRoles(roleType);
+            List<Employee> employee = employeeService.findEmpInRoles(roleType);
             ctx.json(employee);
             ctx.status(200);
         } else {
@@ -98,7 +98,7 @@ public class EmployeeController implements Controller{
         if(ctx.req.getSession(false)!=null) {
             String deptInt = ctx.pathParam("dept");
             int deptNum = Integer.parseInt(deptInt); //taking param string and converting to integer
-            List<Employee> employee = employeeService.FindEmpInDept(deptNum);
+            List<Employee> employee = employeeService.findEmpInDept(deptNum);
             ctx.json(employee);
             ctx.status(200);
         } else {

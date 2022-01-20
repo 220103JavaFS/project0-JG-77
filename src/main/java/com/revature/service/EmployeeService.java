@@ -29,11 +29,11 @@ public class EmployeeService {
         return employeeDAO.terminateEmp(id);
     }
 
-    public List<Employee> FindEmpInRoles(String role){
+    public List<Employee> findEmpInRoles(String role){
         return employeeDAO.findInRoles(role);
     };
 
-    public List<Employee> FindEmpInDept(int dept){
+    public List<Employee> findEmpInDept(int dept){
         return employeeDAO.findInDept(dept);
     }
 }
