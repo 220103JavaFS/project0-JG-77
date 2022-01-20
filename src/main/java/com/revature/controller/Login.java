@@ -31,9 +31,16 @@ public class Login implements Controller{
         }
     };
 
+    private Handler logoutUser = (ctx) -> {
+        ctx.req.getSession().invalidate();
+        ctx.status(200);
+        log.info("Logout Successful!");
+    };
+
 
     @Override
     public void addRoutes(Javalin app) {
         app.post("/login", this.loginUser);
+        app.post("/logout", logoutUser);
     }
 }

@@ -565,3 +565,23 @@
 06:46:19.562 [] [qtp1418385211-16] INFO  c.r.controller.EmployeeController - Response received! Found the employee by ID.
 06:46:36.992 [] [qtp1418385211-19] INFO  c.r.controller.EmployeeController - Response received! Found all employees in this role.
 06:46:50.848 [] [qtp1418385211-18] INFO  c.r.controller.EmployeeController - Response received! Found all employees in this department.
+06:58:29.634 [] [main] INFO  io.javalin.Javalin - 
+       __                      __ _            __ __
+      / /____ _ _   __ ____ _ / /(_)____      / // /
+ __  / // __ `/| | / // __ `// // // __ \    / // /_
+/ /_/ // /_/ / | |/ // /_/ // // // / / /   /__  __/
+\____/ \__,_/  |___/ \__,_//_//_//_/ /_/      /_/
+
+          https://javalin.io/documentation
+
+06:58:29.644 [] [main] INFO  org.eclipse.jetty.util.log - Logging initialized @518ms to org.eclipse.jetty.util.log.Slf4jLog
+06:58:29.645 [] [main] INFO  io.javalin.Javalin - Starting Javalin ...
+06:58:29.668 [] [main] INFO  io.javalin.Javalin - You are running Javalin 4.1.1 (released October 10, 2021. Your Javalin version is 102 days old. Consider upgrading!).
+06:58:29.668 [] [main] INFO  io.javalin.Javalin - No port specified, starting on port 8080. Call start(port) to change ports.
+06:58:29.945 [] [main] INFO  io.javalin.Javalin - Listening on http://localhost:8080/
+06:58:29.945 [] [main] INFO  io.javalin.Javalin - Javalin started in 300ms \o/
+06:58:44.138 [] [qtp1282811396-17] INFO  com.revature.controller.Login - Login Successful!
+06:59:16.247 [] [qtp1282811396-12] INFO  com.revature.controller.Login - Logout Successful!
+06:59:26.542 [] [qtp1282811396-13] INFO  com.revature.controller.Login - Login Successful!
+06:59:43.934 [] [qtp1282811396-25] INFO  c.r.controller.EmployeeController - Response received! All employees in DB returned.
+06:59:58.823 [] [qtp1282811396-13] INFO  com.revature.controller.Login - Logout Successful!
