@@ -121,6 +121,21 @@ public class EmployeeController implements Controller{
         }
     };
 
+    Handler addHours = (ctx) -> {
+        if(ctx.req.getSession(false)!=null) {
+            Employee employee = ctx.bodyAsClass(Employee.class);
+            if(employeeService.addEmpHours(employee.getUserName(), employee.getHoursWorked())){
+                ctx.status(200);
+                log.info("Response received! Updated hours!");
+            }else{
+                ctx.status(400);
+            }
+        } else {
+            ctx.status(401);
+            log.warn("Invalid Request sent!");
+        }
+    };
+
     @Override
     public void addRoutes(Javalin app) {
         app.get("/employee", getEmployees);
@@ -130,5 +145,6 @@ public class EmployeeController implements Controller{
         app.delete("/employee/{empID}", removeEmployee);
         app.get("/employees/{role}", findEmpInRoles);
         app.get("/employeedept/{dept}", findEmpInDept);
+        app.patch("/employee", addHours);
     }
 }

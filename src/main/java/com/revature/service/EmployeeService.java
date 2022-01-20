@@ -36,4 +36,15 @@ public class EmployeeService {
     public List<Employee> findEmpInDept(int dept){
         return employeeDAO.findInDept(dept);
     }
+
+    public int getEmpHours(String username){
+        return  employeeDAO.getHours(username);
+    }
+
+    public boolean addEmpHours(String username, int hours){
+
+        int previousHours = getEmpHours(username);
+        int combinedHours = previousHours + hours;
+        return  employeeDAO.addHours(username, combinedHours);
+    }
 }

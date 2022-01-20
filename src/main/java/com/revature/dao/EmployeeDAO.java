@@ -12,6 +12,9 @@ public interface EmployeeDAO {
     boolean updateEmp(Employee employee);
     boolean terminateEmp(int id);
     String verifyPassword(String username);
-    List <Employee> findInRoles(String role);
-    List <Employee> findInDept(int dept);
+    List <Employee> findInRoles(String role);//returns list of employees by role
+    List <Employee> findInDept(int dept); //returns list of employees by role
+
+    int getHours(String username); //retrieves current hours in DB
+    boolean addHours(String username, int hours); //adds new hours with current hours to update db
 }

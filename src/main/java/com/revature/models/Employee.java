@@ -7,7 +7,7 @@ public class Employee {
     private int employeeID;
     private String firstName;
     private String lastName;
-    private String userName; //made static
+    private String userName;
     private String empPassword;
     private int hoursWorked;
     private Roles empRole;

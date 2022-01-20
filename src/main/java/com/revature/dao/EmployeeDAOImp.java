@@ -283,4 +283,45 @@ public class EmployeeDAOImp implements EmployeeDAO{
         return new ArrayList<Employee>();
     }
 
+    @Override
+    public int getHours(String username) {
+        try (Connection connect = ConnectionUtil.getConnection()) {
+            String sql ="SELECT employees.hours_worked FROM employees WHERE username = ?;";
+
+            PreparedStatement statement = connect.prepareStatement(sql);
+
+            statement.setString(1, username);
+
+            ResultSet result = statement.executeQuery();
+
+            while (result.next()) {
+                return result.getInt("hours_worked");
+            }
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    @Override
+    public boolean addHours(String username, int hours) {
+        try (Connection connect = ConnectionUtil.getConnection()) {
+            String sql ="UPDATE employees SET hours_worked = ? WHERE username = ?;";
+
+            PreparedStatement statement = connect.prepareStatement(sql);
+
+            statement.setInt(1, hours);
+            statement.setString(2, username);
+
+            statement.execute();
+            return  true;
+
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 }
