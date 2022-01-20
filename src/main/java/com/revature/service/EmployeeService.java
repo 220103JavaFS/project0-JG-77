@@ -37,14 +37,13 @@ public class EmployeeService {
         return employeeDAO.findInDept(dept);
     }
 
-    public int getEmpHours(String username){
+    public int getEmpHours(String username){ //using 2 methods to add hours and update
         return  employeeDAO.getHours(username);
     }
+    public boolean addEmpHours(String username, int hours){ //send in username & hours
 
-    public boolean addEmpHours(String username, int hours){
-
-        int previousHours = getEmpHours(username);
-        int combinedHours = previousHours + hours;
-        return  employeeDAO.addHours(username, combinedHours);
+        int previousHours = getEmpHours(username); //call getEmpHours to get hours already stored in db
+        int combinedHours = previousHours + hours; //add hours together & send to update db
+        return  employeeDAO.addHours(username, combinedHours);//passing in username with total hours
     }
 }

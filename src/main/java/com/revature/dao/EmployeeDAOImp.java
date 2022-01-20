@@ -284,7 +284,7 @@ public class EmployeeDAOImp implements EmployeeDAO{
     }
 
     @Override
-    public int getHours(String username) {
+    public int getHours(String username) { //called by addEmpHours() in service layer to get hours from employee
         try (Connection connect = ConnectionUtil.getConnection()) {
             String sql ="SELECT employees.hours_worked FROM employees WHERE username = ?;";
 
@@ -305,7 +305,7 @@ public class EmployeeDAOImp implements EmployeeDAO{
     }
 
     @Override
-    public boolean addHours(String username, int hours) {
+    public boolean addHours(String username, int hours) { //gets aggregated hours and updates db
         try (Connection connect = ConnectionUtil.getConnection()) {
             String sql ="UPDATE employees SET hours_worked = ? WHERE username = ?;";
 

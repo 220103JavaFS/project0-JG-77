@@ -121,7 +121,7 @@ public class EmployeeController implements Controller{
         }
     };
 
-    Handler addHours = (ctx) -> {
+    Handler addHours = (ctx) -> { //sends Patch request to update hours
         if(ctx.req.getSession(false)!=null) {
             Employee employee = ctx.bodyAsClass(Employee.class);
             if(employeeService.addEmpHours(employee.getUserName(), employee.getHoursWorked())){
