@@ -47,11 +47,11 @@ public class RoleController implements Controller{
                 ctx.status(200);
                 log.info("Response received! Role updated.");
             }else{
-                ctx.status(400);
+                ctx.status(400); //bad request
                 log.warn("Invalid Request sent!");
             }
         } else {
-            ctx.status(401);
+            ctx.status(401); //unauthorized due to invalid login
             log.warn("Invalid Request sent!");
         }
     };
